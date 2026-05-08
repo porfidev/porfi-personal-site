@@ -6,12 +6,20 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.1.5"
+    "@astrojs/react": "^5.0.4",
+    "astro": "^6.2.2",
+    "lodash": "^4.18.1",
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.24",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

@@ -1,0 +1,42 @@
+---
+type Props = {
+	id: string;
+	name: string;
+	placeholder?: string;
+	required?: boolean;
+	class?: string;
+};
+
+const { id, name, placeholder = '', required = false, class: className } = Astro.props;
+---
+
+<textarea
+	id={id}
+	name={name}
+	placeholder={placeholder}
+	required={required}
+	class:list={['textarea', className]}></textarea>
+
+<style>
+	.textarea {
+		font-family: 'Inter', serif;
+		background-color: #0d1c2d;
+		border: 1px solid #3b494b;
+		min-width: 200px;
+		min-height: 52px;
+		border-radius: 8px;
+		outline: none;
+		color: #00f0ff;
+		padding: 10px 20px;
+	}
+
+	.textarea:hover {
+		outline: none;
+		border: 1px solid #6b8387;
+	}
+
+	.textarea:focus {
+		outline: none;
+		border: 1px solid #00f0ff;
+	}
+</style>

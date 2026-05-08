@@ -1,0 +1,17 @@
+---
+type Props = {
+	class?: string;
+};
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['field', className]}>
+	<slot />
+</div>
+
+<style>
+	.field {
+		margin-bottom: 20px;
+	}
+</style>

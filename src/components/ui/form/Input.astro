@@ -1,0 +1,53 @@
+---
+type Props = {
+	id: string;
+	name: string;
+	type?: 'text' | 'number' | 'email';
+	placeholder?: string;
+	required?: boolean;
+	class?: string;
+};
+
+const {
+	id,
+	name,
+	type = 'text',
+	placeholder = '',
+	required = false,
+	class: className,
+} = Astro.props;
+---
+
+<input
+	id={id}
+	name={name}
+	type={type}
+	placeholder={placeholder}
+	required={required}
+	class:list={['input', className]}
+/>
+
+<style>
+	.input {
+		font-family: 'Inter', serif;
+		background-color: #0d1c2d;
+		border: 1px solid #3b494b;
+		min-width: 200px;
+		min-height: 52px;
+		border-radius: 8px;
+		outline: none;
+		color: #00f0ff;
+
+		padding: 10px 20px;
+	}
+
+	.input:hover {
+		outline: none;
+		border: 1px solid #6b8387;
+	}
+
+	.input:focus {
+		outline: none;
+		border: 1px solid #00f0ff;
+	}
+</style>

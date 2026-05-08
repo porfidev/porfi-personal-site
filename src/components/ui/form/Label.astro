@@ -1,0 +1,34 @@
+---
+type Props = {
+	label: string;
+	class?: string;
+	for: string;
+	required?: boolean;
+};
+
+const { label, for: htmlFor, class: className, required = false } = Astro.props;
+---
+
+<label for={htmlFor} class:list={['label', className]}>
+	{label}
+	{required && <span class="label--required">*</span>}
+</label>
+
+<style>
+	.label {
+		font-size: 0.75rem;
+		color: #7df4ff;
+		text-transform: uppercase;
+		font-family: 'Inter', sans-serif;
+		font-weight: bold;
+		display: block;
+
+		padding-left: 8px;
+		padding-bottom: 10px;
+	}
+
+	.label--required {
+		font-size: 0.75rem;
+		color: #7df4ff;
+	}
+</style>

@@ -1,0 +1,24 @@
+.menu {
+  background-color: rgba(255, 255, 255, 0.7);
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  height: 3rem;
+  border-bottom: #070e14 3px solid;
+  align-items: center;
+
+  display: flex;
+  flex-direction: row;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  .menu__logo {
+    h1 {
+      padding: 0;
+      margin: 0;
+      color: #070e14;
+      font-size: 1.2rem;
+      letter-spacing: -0.05rem;
+    }
+  }
+}

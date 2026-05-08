@@ -1,0 +1,47 @@
+---
+import Field from '../ui/form/Field.astro';
+import Input from '../ui/form/Input.astro';
+import Label from '../ui/form/Label.astro';
+import './ContactForm.styles.css';
+import Button from '../ui/form/Button.astro';
+import TextArea from '../ui/form/TextArea.astro';
+---
+
+<form class="contact__form">
+	<Field class="contact__field">
+		<Label for="name" label="Nombre" class="contact__label" required />
+		<Input
+			id="name"
+			name="name"
+			type="text"
+			placeholder="Ingresa tu nombre"
+			class="contact__input"
+			required
+		/>
+	</Field>
+
+	<Field class="contact__field">
+		<Label for="email" label="Correo electrónico" required />
+		<Input
+			id="email"
+			name="email"
+			type="email"
+			placeholder="tucorreo@tudominio.com"
+			class="contact__input"
+			required
+		/>
+	</Field>
+
+	<Field class="contact__field">
+		<Label for="message" label="Comentarios" required />
+		<TextArea
+			id="message"
+			name="message"
+			placeholder="Ingresa tu mensaje aquí"
+			class="contact__textarea"
+			required
+		/>
+	</Field>
+
+	<Button type="submit">Enviar</Button>
+</form>

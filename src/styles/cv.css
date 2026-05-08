@@ -1,0 +1,12 @@
+/* Styles for the /cv page */
+@media print {
+    body {
+        background-color: rebeccapurple;
+    }
+}
+
+@media screen {
+    body {
+        background-color: beige;
+    }
+}
