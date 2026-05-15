@@ -7,7 +7,7 @@ import Button from '../ui/form/Button.astro';
 import TextArea from '../ui/form/TextArea.astro';
 ---
 
-<form class="contact__form">
+<form class="contact__form" id="contact-form">
 	<Field class="contact__field">
 		<Label for="name" label="Nombre" class="contact__label" required />
 		<Input
@@ -43,5 +43,13 @@ import TextArea from '../ui/form/TextArea.astro';
 		/>
 	</Field>
 
+	<Field class="contact__captcha">
+		<div id="turnstile-container"></div>
+	</Field>
+
 	<Button type="submit">Enviar</Button>
 </form>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+<script>
+	import './ContactForm.script.ts';
+</script>

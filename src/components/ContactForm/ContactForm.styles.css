@@ -15,3 +15,9 @@
   resize: vertical;
   width: 100%;
 }
+
+.contact__captcha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
