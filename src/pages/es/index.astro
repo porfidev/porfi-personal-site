@@ -1,0 +1,42 @@
+---
+import 'normalize.css';
+import '@styles/index.css';
+import ContactSection from '@components/ContactSection/ContactSection.astro';
+import Seo from '@components/Seo/Seo.astro';
+import FloatMenu from '@components/FloatMenu/FloatMenu.astro';
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="generator" content={Astro.generator} />
+		<Seo
+			lang="es"
+			title="porfi.dev | Desarrollador Full Stack"
+			description="Portafolio de Porfirio Chávez, desarrollador web especializado en interfaces, aplicaciones modernas y experiencias digitales."
+			path="/es"
+		/>
+	</head>
+	<body>
+		<FloatMenu />
+		<!--
+		<header>
+			<MainMenu />
+			<FloatMenu />
+		</header>
+		<section id="welcome">
+			<header>
+				<h1>Porfirio Chávez</h1>
+			</header>
+			<canvas id="canvas-particles"></canvas>
+		</section>
+		<div style="width: 100%; height: 3000px; background-color: brown"></div>-->
+		<ContactSection lang="es" />
+		<script>
+			import '@scripts/background-particle.ts';
+		</script>
+	</body>
+</html>

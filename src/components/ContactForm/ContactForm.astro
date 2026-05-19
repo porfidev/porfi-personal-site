@@ -6,39 +6,53 @@ import Input from '../ui/form/Input.astro';
 import Label from '../ui/form/Label.astro';
 import TextArea from '../ui/form/TextArea/TextArea.astro';
 import Turnstile from '../Turnstile/Turnstile.astro';
+
+type Props = {
+	copy: {
+		name: string;
+		namePlaceholder: string;
+		email: string;
+		emailPlaceholder: string;
+		message: string;
+		messagePlaceholder: string;
+		submit: string;
+	};
+};
+
+const { copy } = Astro.props;
 ---
 
 <form class="contact__form" id="contact-form">
 	<Field class="contact__field">
-		<Label for="name" label="Nombre" class="contact__label" required />
+		<Label for="name" label={copy.name} class="contact__label" required />
 		<Input
 			id="name"
 			name="name"
 			type="text"
-			placeholder="Ingresa tu nombre"
+			placeholder={copy.namePlaceholder}
 			class="contact__input"
 			required
 		/>
 	</Field>
 
 	<Field class="contact__field">
-		<Label for="email" label="Correo electrónico" required />
+		<Label for="email" label={copy.email} required />
 		<Input
 			id="email"
 			name="email"
 			type="email"
-			placeholder="tucorreo@tudominio.com"
+			placeholder={copy.emailPlaceholder}
 			class="contact__input"
 			required
 		/>
 	</Field>
 
 	<Field class="contact__field">
-		<Label for="message" label="Comentarios" required />
+		<Label for="message" label={copy.message} required />
 		<TextArea
 			id="message"
 			name="message"
-			placeholder="Ingresa tu mensaje aquí"
+			placeholder={copy.messagePlaceholder}
 			class="contact__textarea"
 			required
 		/>
@@ -48,7 +62,7 @@ import Turnstile from '../Turnstile/Turnstile.astro';
 		<Turnstile id="turnstile-contact" />
 	</Field>
 
-	<Button type="submit">Enviar</Button>
+	<Button type="submit">{copy.submit}</Button>
 </form>
 <script>
 	import './ContactForm.script.ts';

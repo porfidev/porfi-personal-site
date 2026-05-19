@@ -1,22 +1,29 @@
 ---
 import './ContactSection.styles.css';
 import ContactForm from '../ContactForm/ContactForm.astro';
+import { contactCopy, type ContactLang } from '../../i18n/contact.ts';
+
+interface Props {
+	lang: ContactLang;
+}
+
+const { lang } = Astro.props;
+const copy = contactCopy[lang];
 ---
 
 <section id="contact" class="contact">
 	<div class="contact__header">
 		<div>
-			<h1 class="contact__h1">Contacto</h1>
+			<h1 class="contact__h1">{copy.title}</h1>
 			<p class="contact__p">
-				<strong>¿Tienes algo en mente?</strong><br />
-				Será un gusto leerte. Ya sea una duda, una propuesta o simplemente quieras iniciar una
-				conversación, este espacio está abierto para ti.
+				<strong>{copy.leadTitle}</strong><br />
+				{copy.leadBody}
 			</p>
-			<p class="contact__p">Déjame un mensaje y te responderé lo antes posible.</p>
+			<p class="contact__p">{copy.note}</p>
 		</div>
 	</div>
 	<div class="contact__container">
-		<ContactForm />
+		<ContactForm copy={copy.form} />
 
 		<div class="contact__cards">
 			<div class="contact__card contact__card--wide"></div>

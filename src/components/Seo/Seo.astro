@@ -1,0 +1,62 @@
+---
+import type { Lang } from '@i18n/config';
+import { getRequiredEnv } from '@scripts/env.ts';
+
+type Props = {
+	lang: Lang;
+	title: string;
+	description: string;
+	path: string;
+	image?: string;
+	type?: 'website' | 'article';
+	noindex?: boolean;
+};
+
+const {
+	lang,
+	title,
+	description,
+	path,
+	image = '/og-image.jpg',
+	type = 'website',
+	noindex = false,
+} = Astro.props;
+
+const siteUrl = getRequiredEnv('PUBLIC_SITE_URL');
+const canonicalUrl = new URL(path, siteUrl).toString();
+const imageUrl = new URL(image, siteUrl).toString();
+
+const alternateUrls = {
+	es: new URL('/es', siteUrl).toString(),
+	en: new URL('/en', siteUrl).toString(),
+};
+
+const ogLocale = lang === 'es' ? 'es_MX' : 'en_US';
+const alternateLocale = lang === 'es' ? 'en_US' : 'es_MX';
+---
+
+<title>{title}</title>
+
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<link rel="canonical" href={canonicalUrl} />
+
+<link rel="alternate" hreflang="es" href={alternateUrls.es} />
+<link rel="alternate" hreflang="en" href={alternateUrls.en} />
+<link rel="alternate" hreflang="x-default" href={alternateUrls.es} />
+
+<!--// Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:descrsdfiption" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:type" content={type} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:locale:alternate" content={alternateLocale} />
+
+<!--// X o twitter (pendiente revisar)-->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
