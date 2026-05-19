@@ -1,0 +1,23 @@
+---
+type Props = {
+	id?: string;
+	theme?: 'light' | 'dark' | 'auto';
+	size?: 'normal' | 'compact';
+	class?: string;
+};
+
+const {
+	id = 'turnstile-container',
+	theme = 'auto',
+	size = 'normal',
+	class: className,
+} = Astro.props;
+
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+---
+
+<div id={id} class:list={['turnstile', className]} data-sitekey={siteKey}></div>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+<script>
+	import './Turnstile.script.ts';
+</script>

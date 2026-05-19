@@ -1,10 +1,11 @@
 ---
+import './ContactForm.styles.css';
+import Button from '../ui/form/Button.astro';
 import Field from '../ui/form/Field.astro';
 import Input from '../ui/form/Input.astro';
 import Label from '../ui/form/Label.astro';
-import './ContactForm.styles.css';
-import Button from '../ui/form/Button.astro';
-import TextArea from '../ui/form/TextArea.astro';
+import TextArea from '../ui/form/TextArea/TextArea.astro';
+import Turnstile from '../Turnstile/Turnstile.astro';
 ---
 
 <form class="contact__form" id="contact-form">
@@ -44,12 +45,11 @@ import TextArea from '../ui/form/TextArea.astro';
 	</Field>
 
 	<Field class="contact__captcha">
-		<div id="turnstile-container"></div>
+		<Turnstile id="turnstile-contact" />
 	</Field>
 
 	<Button type="submit">Enviar</Button>
 </form>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
 <script>
 	import './ContactForm.script.ts';
 </script>

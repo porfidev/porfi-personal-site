@@ -1,0 +1,20 @@
+---
+type Props = {
+	id: string;
+	name: string;
+	placeholder?: string;
+	required?: boolean;
+	class?: string;
+};
+
+const { id, name, placeholder = '', required = false, class: className } = Astro.props;
+
+import './TextArea.styles.css';
+---
+
+<textarea
+	id={id}
+	name={name}
+	placeholder={placeholder}
+	required={required}
+	class:list={['textarea', className]}></textarea>

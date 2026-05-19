@@ -2,12 +2,13 @@ import axios from 'axios';
 import { FormData } from 'node-fetch-native';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
-const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const publiApiUrl = import.meta.env.PUBLIC_API_URL;
 
 const notyf = new Notyf({
   position: { x: 'left', y: 'top' },
 });
 const contactFormElement: HTMLFormElement | null = document.querySelector('#contact-form');
+const turnstileElement = document.querySelector<HTMLElement>('#turnstile-contact');
 let widgetId: string | undefined;
 
 function setFormDisable(form: HTMLFormElement, disabled: boolean) {
@@ -36,10 +37,11 @@ async function onSubmitFormElement(event: SubmitEvent) {
 
     console.log('TOKEN', responseToken);
 
-    const response = await axios.post('http://localhost:3030/email/send', {
-      //to: 'hola@porfi.dev',
+    const response = await axios.post(`${publiApiUrl}/email/send`, {
+      to: 'hola@porfi.dev',
       subject: 'Mensaje de contacto',
       comments: `Hola de ${data.name} / ${data.email} te escribo ${data.message}`,
+      token: responseToken,
     });
 
     if (response.status === 200) {
@@ -71,18 +73,15 @@ async function onSubmitFormElement(event: SubmitEvent) {
   }
 }
 
-if (contactFormElement) {
-  setFormDisable(contactFormElement, true);
-  contactFormElement?.addEventListener('submit', onSubmitFormElement);
+contactFormElement?.addEventListener('submit', onSubmitFormElement);
 
-  widgetId = turnstile.render('#turnstile-container', {
-    sitekey: siteKey,
-    callback: function (token) {
-      console.log('Success:', token);
-      setFormDisable(contactFormElement, false);
-    },
-    'error-callback': function (errorCode) {
-      console.error('Turnstile error:', errorCode);
-    },
-  });
-}
+turnstileElement?.addEventListener('turnstile:success', (event) => {
+  const customEvent = event as CustomEvent<{ token: string; widgetId: string }>;
+  widgetId = customEvent.detail.widgetId;
+
+  console.log('SE HIZO SUCCESS', widgetId);
+
+  if (contactFormElement) {
+    setFormDisable(contactFormElement, false);
+  }
+});

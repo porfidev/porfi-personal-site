@@ -1,0 +1,33 @@
+.textarea {
+  font-family: 'Inter', serif;
+  color: #00f0ff;
+  outline: none;
+}
+
+:where(.textarea) {
+  background-color: #0d1c2d;
+  border: 1px solid #3b494b;
+  border-bottom-width: 2px;
+  min-width: 200px;
+  min-height: 52px;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.textarea:hover {
+  outline: none;
+}
+
+:where(.textarea:hover) {
+  border: 1px solid #6b8387;
+  border-bottom-width: 2px;
+}
+
+:where(.textarea:focus) {
+  border: 1px solid #00f0ff;
+  border-bottom-width: 2px;
+}
+
+:where(.textarea:disabled) {
+  opacity: 0.4;
+}
