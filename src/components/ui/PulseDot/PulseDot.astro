@@ -1,0 +1,11 @@
+---
+import './PulseDot.styles.css';
+
+interface Props {
+	class?: string;
+}
+
+const { class: classsName = '' } = Astro.props;
+---
+
+<span class:list={['pulse-dot', classsName]} aria-hidden="true"></span>

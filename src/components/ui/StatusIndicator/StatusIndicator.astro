@@ -1,0 +1,17 @@
+---
+import PulseDot from '../PulseDot/PulseDot.astro';
+import './StatusIndicator.styles.css';
+
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['status-indicator', className]}>
+	<PulseDot />
+	<span class="status-indicator__text">
+		<slot />
+	</span>
+</div>

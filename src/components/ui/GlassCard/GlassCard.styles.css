@@ -1,0 +1,6 @@
+:where(.glass-card) {
+  background: rgba(30, 30, 38, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 219, 233, 0.1);
+  border-radius: 12px;
+}

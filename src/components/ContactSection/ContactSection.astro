@@ -1,7 +1,10 @@
 ---
 import './ContactSection.styles.css';
 import ContactForm from '../ContactForm/ContactForm.astro';
-import { contactCopy, type ContactLang } from '../../i18n/contact.ts';
+import { contactCopy, type ContactLang } from '@i18n/contact.ts';
+import GlassCard from '@components/ui/GlassCard/GlassCard.astro';
+import PulseDot from '@components/ui/PulseDot/PulseDot.astro';
+import StatusIndicator from '@components/ui/StatusIndicator/StatusIndicator.astro';
 
 interface Props {
 	lang: ContactLang;
@@ -26,10 +29,17 @@ const copy = contactCopy[lang];
 		<ContactForm copy={copy.form} />
 
 		<div class="contact__cards">
-			<div class="contact__card contact__card--wide"></div>
-			<div class="contact__card"></div>
-			<div class="contact__card"></div>
-			<div class="contact__card contact__card--wide"></div>
+			<GlassCard
+				class="contact__card contact__card--active contact__card--status contact__card--wide"
+			>
+				<StatusIndicator>{copy.currentStatus}</StatusIndicator>
+				<h2 class="contact__card-title">
+					{copy.openCardTitle.map((line) => <span>{line}</span>)}
+				</h2>
+			</GlassCard>
+			<GlassCard class="contact__card" />
+			<GlassCard class="contact__card" />
+			<GlassCard class="contact__card contact__card--wide" />
 		</div>
 	</div>
 </section>

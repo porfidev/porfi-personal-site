@@ -6,6 +6,7 @@ import Input from '../ui/form/Input.astro';
 import Label from '../ui/form/Label.astro';
 import TextArea from '../ui/form/TextArea/TextArea.astro';
 import Turnstile from '../Turnstile/Turnstile.astro';
+import GlassCard from 'src/components/ui/GlassCard/GlassCard.astro';
 
 type Props = {
 	copy: {
@@ -22,48 +23,50 @@ type Props = {
 const { copy } = Astro.props;
 ---
 
-<form class="contact__form" id="contact-form">
-	<Field class="contact__field">
-		<Label for="name" label={copy.name} class="contact__label" required />
-		<Input
-			id="name"
-			name="name"
-			type="text"
-			placeholder={copy.namePlaceholder}
-			class="contact__input"
-			required
-		/>
-	</Field>
+<GlassCard>
+	<form class="contact__form" id="contact-form">
+		<Field class="contact__field">
+			<Label for="name" label={copy.name} class="contact__label" required />
+			<Input
+				id="name"
+				name="name"
+				type="text"
+				placeholder={copy.namePlaceholder}
+				class="contact__input"
+				required
+			/>
+		</Field>
 
-	<Field class="contact__field">
-		<Label for="email" label={copy.email} required />
-		<Input
-			id="email"
-			name="email"
-			type="email"
-			placeholder={copy.emailPlaceholder}
-			class="contact__input"
-			required
-		/>
-	</Field>
+		<Field class="contact__field">
+			<Label for="email" label={copy.email} required />
+			<Input
+				id="email"
+				name="email"
+				type="email"
+				placeholder={copy.emailPlaceholder}
+				class="contact__input"
+				required
+			/>
+		</Field>
 
-	<Field class="contact__field">
-		<Label for="message" label={copy.message} required />
-		<TextArea
-			id="message"
-			name="message"
-			placeholder={copy.messagePlaceholder}
-			class="contact__textarea"
-			required
-		/>
-	</Field>
+		<Field class="contact__field">
+			<Label for="message" label={copy.message} required />
+			<TextArea
+				id="message"
+				name="message"
+				placeholder={copy.messagePlaceholder}
+				class="contact__textarea"
+				required
+			/>
+		</Field>
 
-	<Field class="contact__captcha">
-		<Turnstile id="turnstile-contact" />
-	</Field>
+		<Field class="contact__captcha">
+			<Turnstile id="turnstile-contact" />
+		</Field>
 
-	<Button type="submit">{copy.submit}</Button>
-</form>
+		<Button type="submit">{copy.submit}</Button>
+	</form>
+</GlassCard>
 <script>
 	import './ContactForm.script.ts';
 </script>

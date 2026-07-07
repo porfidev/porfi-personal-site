@@ -15,6 +15,8 @@ export const contactCopy = {
       messagePlaceholder: 'Ingresa tu mensaje aquí',
       submit: 'Enviar',
     },
+    openCardTitle: ['Abierto a nuevas', 'oportunidades profesionales'],
+    currentStatus: 'Estado actual',
   },
   en: {
     title: 'Contact',
@@ -31,6 +33,8 @@ export const contactCopy = {
       messagePlaceholder: 'Enter your message here',
       submit: 'Send',
     },
+    openCardTitle: ['Open to new', 'professional opportunities'],
+    currentStatus: 'Current status',
   },
 } as const;
 
