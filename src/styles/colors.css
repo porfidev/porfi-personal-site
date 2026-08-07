@@ -1,0 +1,8 @@
+:root {
+  --font-family-base: 'Inter';
+
+  --color-primary: #00F0FF;
+  --color-icon-idle: #B9CACB;
+  --color-icon-hover: var(--color-primary);
+  --color-text-primary: #D4E4FA;
+}
