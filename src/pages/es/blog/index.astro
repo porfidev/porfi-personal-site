@@ -1,0 +1,61 @@
+---
+import { getCollection } from 'astro:content';
+import Seo from '@components/Seo/Seo.astro';
+import type { BlogPost } from 'src/types/collections.ts';
+import ContactSection from '@components/ContactSection/ContactSection.astro';
+
+const posts: BlogPost[] = (
+	await getCollection('blog', ({ data }: BlogPost) => {
+		return data.lang === 'es' && !data.draft;
+	})
+).sort((a: BlogPost, b: BlogPost) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="generator" content={Astro.generator} />
+		<Seo
+			lang="es"
+			title="porfi.dev | Desarrollador Full Stack"
+			description="Notas sobre desarrollo web, producto, interfaces y tecnología."
+			path="/es/blog"
+		/>
+	</head>
+	<body>
+		<section aria-label="Posts">
+			{
+				posts.map((post) => (
+					<article>
+						<time datetime={post.data.pubDate.toISOString()}>
+							{post.data.pubDate.toLocaleDateString('es-MX', {
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})}
+						</time>
+
+						<h2>
+							<a href={`/es/blog/${post.id.replace(/^es\//, '')}`}>
+								{post.data.title}
+							</a>
+						</h2>
+
+						<p>{post.data.description}</p>
+
+						{post.data.tags.length > 0 && (
+							<ul aria-label="Tags">
+								{post.data.tags.map((tag) => (
+									<li>{tag}</li>
+								))}
+							</ul>
+						)}
+					</article>
+				))
+			}
+		</section>
+	</body>
+</html>

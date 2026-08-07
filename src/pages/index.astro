@@ -1,3 +1,70 @@
 ---
-return Astro.redirect('/es');
+import 'normalize.css';
+import '@styles/index.css';
+
+const targetPath = '/es';
 ---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta http-equiv="refresh" content={`1.2;url=${targetPath}`} />
+		<link rel="alternate" hreflang="es" href="/es" />
+		<link rel="alternate" hreflang="en" href="/en" />
+		<link rel="alternate" hreflang="x-default" href="/es" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<title>porfi.dev | software engineer</title>
+	</head>
+	<body class="redirect-page">
+		<div class="loader" aria-label="cargando"></div>
+		<script is:inline>
+			const supportedLocales = ['es', 'en'];
+			const fallbackLocale = 'es';
+
+			const preferredLocale =
+				navigator.languages
+					?.map((locale) => locale.toLowerCase().split('-')[0])
+					.find((locale) => supportedLocales.includes(locale)) ||
+				navigator.language?.toLowerCase().split('-')[0];
+
+			const targetLocale = supportedLocales.includes(preferredLocale)
+				? preferredLocale
+				: fallbackLocale;
+
+			window.setTimeout(() => {
+				window.location.replace(`/${targetLocale}`);
+			}, 1200);
+		</script>
+		<style>
+			.redirect-page {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #0d1c2d;
+			}
+			.loader {
+				width: 120px;
+				height: 22px;
+				border-radius: 20px;
+				color: #00f0ff;
+				border: 2px solid;
+				position: relative;
+			}
+			.loader::before {
+				content: '';
+				position: absolute;
+				margin: 2px;
+				inset: 0 100% 0 0;
+				border-radius: inherit;
+				background: currentColor;
+				animation: lineLoading 2s infinite;
+			}
+			@keyframes lineLoading {
+				100% {
+					inset: 0;
+				}
+			}
+		</style>
+	</body>
+</html>
