@@ -3,14 +3,11 @@ import 'normalize.css';
 import '@styles/index.css';
 import ContactSection from '@components/ContactSection/ContactSection.astro';
 import Seo from '@components/Seo/Seo.astro';
-import FloatMenu from '@components/FloatMenu/FloatMenu.astro';
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<meta name="generator" content={Astro.generator} />
 		<Seo
@@ -19,9 +16,15 @@ import FloatMenu from '@components/FloatMenu/FloatMenu.astro';
 			description="Portfolio of Porfirio Chávez, a web developer focused on interfaces, modern applications, and digital experiences."
 			path="/en"
 		/>
+
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="MyWebSite" />
+		<link rel="manifest" href="/site.webmanifest" />
 	</head>
 	<body>
-		<FloatMenu />
 		<!--
 		<header>
 			<MainMenu />
@@ -34,7 +37,9 @@ import FloatMenu from '@components/FloatMenu/FloatMenu.astro';
 			<canvas id="canvas-particles"></canvas>
 		</section>
 		<div style="width: 100%; height: 3000px; background-color: brown"></div>-->
-		<ContactSection lang="en" />
+		<main>
+			<ContactSection lang="en" />
+		</main>
 		<script>
 			import '@scripts/background-particle.ts';
 		</script>
