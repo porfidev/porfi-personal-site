@@ -1,0 +1,106 @@
+---
+import 'normalize.css';
+import '@styles/index.css';
+import '@components/ChangelogEntry/ChangelogEntry.styles.css';
+import { getCollection } from 'astro:content';
+import Seo from '@components/Seo/Seo.astro';
+import Footer from '@components/Footer/Footer.astro';
+import ChangelogEntry from '@components/ChangelogEntry/ChangelogEntry.astro';
+
+const entries = (
+	await getCollection('changelog', ({ data }) => {
+		return data.lang === 'es' && !data.draft;
+	})
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="generator" content={Astro.generator} />
+
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+
+		<Seo
+			lang="es"
+			title="Changelog | porfi.dev"
+			description="Registro publico de cambios, mejoras y mantenimiento de porfi.dev."
+			path="/es/changelog"
+		/>
+	</head>
+	<body>
+		<main class="changelog-page">
+			<header class="changelog-hero">
+				<p>Registro publico</p>
+				<h1>Changelog</h1>
+				<p>
+					Cambios relevantes del sitio: nuevas secciones, ajustes de contenido, mejoras
+					visuales, correcciones y mantenimiento.
+				</p>
+			</header>
+
+			<section class="changelog-list" aria-label="Cambios publicados">
+				{entries.map((entry) => <ChangelogEntry entry={entry} />)}
+			</section>
+		</main>
+
+		<Footer lang="es" />
+	</body>
+</html>
+
+<style>
+	body {
+		margin: 0;
+		background: #f8fafc;
+		color: #070e14;
+	}
+
+	.changelog-page {
+		width: min(100% - 2rem, 980px);
+		margin: 0 auto;
+		padding: 4rem 0;
+	}
+
+	.changelog-hero {
+		max-width: 720px;
+		padding-bottom: 2.5rem;
+	}
+
+	.changelog-hero p {
+		margin: 0;
+		color: rgba(7, 14, 20, 0.66);
+		font-size: 1rem;
+		line-height: 1.65;
+	}
+
+	.changelog-hero p:first-child {
+		margin-bottom: 0.75rem;
+		color: #2563eb;
+		font-size: 0.82rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.changelog-hero h1 {
+		margin: 0 0 1rem;
+		color: #070e14;
+		font-size: clamp(2.5rem, 8vw, 5rem);
+		line-height: 0.95;
+	}
+
+	.changelog-list {
+		border-bottom: 1px solid rgba(7, 14, 20, 0.12);
+	}
+
+	@media screen and (min-width: 48em) {
+		.changelog-page {
+			padding: 6rem 0;
+		}
+	}
+</style>

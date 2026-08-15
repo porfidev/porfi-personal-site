@@ -1,0 +1,16 @@
+---
+import pkg from '../../../package.json';
+import type { Lang } from '@i18n/config.ts';
+import { footerCopy } from '@i18n/footer.ts';
+
+type Props = {
+	lang: Lang;
+};
+const websiteVersion = pkg.version;
+const { lang } = Astro.props;
+const copy = footerCopy[lang];
+---
+
+<footer class="footer">
+	<small>v{websiteVersion}</small>
+</footer>

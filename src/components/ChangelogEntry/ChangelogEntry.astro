@@ -1,0 +1,55 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+
+type Props = {
+	entry: CollectionEntry<'changelog'>;
+};
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const typeLabels = {
+	feature: 'Feature',
+	fix: 'Fix',
+	content: 'Content',
+	design: 'Design',
+	maintenance: 'Maintenance',
+};
+
+const formattedDate = entry.data.date.toLocaleDateString('es-MX', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+---
+
+<article class="changelog-entry">
+	<div class="changelog-entry__date">
+		<time datetime={entry.data.date.toISOString()}>{formattedDate}</time>
+	</div>
+
+	<div class="changelog-entry__body">
+		<div class="changelog-entry__header">
+			<span class={`changelog-entry__type changelog-entry__type--${entry.data.type}`}>
+				{typeLabels[entry.data.type]}
+			</span>
+			<h2>{entry.data.title}</h2>
+		</div>
+
+		<p class="changelog-entry__description">{entry.data.description}</p>
+
+		<div class="changelog-entry__content">
+			<Content />
+		</div>
+
+		{
+			entry.data.tags.length > 0 && (
+				<ul class="changelog-entry__tags" aria-label="Tags">
+					{entry.data.tags.map((tag) => (
+						<li>{tag}</li>
+					))}
+				</ul>
+			)
+		}
+	</div>
+</article>
