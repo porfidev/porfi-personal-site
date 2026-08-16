@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Seo from '@components/Seo/Seo.astro';
 import type { BlogPost } from 'src/types/collections.ts';
+import BlogPostingSchema from '@components/StructuredData/BlogPosting.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog', ({ data }) => {
@@ -33,8 +34,14 @@ const { Content } = await render(post);
 			title={`${post.data.title} | porfi.dev`}
 			description={post.data.description}
 			path={`/es/blog/${slug}`}
+			image={post.data.cover}
 			type="article"
+			publishedTime={post.data.pubDate}
+			modifiedTime={post.data.updatedDate}
+			author={post.data.author}
+			tags={post.data.tags}
 		/>
+		<BlogPostingSchema post={post} slug={slug} />
 	</head>
 	<body>
 		<main>

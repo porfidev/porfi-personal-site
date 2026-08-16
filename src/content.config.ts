@@ -14,6 +14,12 @@ const blog = defineCollection({
     lang: z.enum(['es', 'en']),
     translationKey: z.string().optional(),
     slug: z.string().optional(),
+    type: z.enum(['website', 'article']).default('article'),
+    schemaType: z.enum(['BlogPosting', 'Article']).default('BlogPosting'),
+    author: z.string().default('Porfirio Chavez'),
+    authorAlias: z.string().default('porfidev'),
+    cover: z.string().optional(),
+    coverAlt: z.string().optional(),
   }),
 });
 

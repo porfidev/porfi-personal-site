@@ -1,13 +1,19 @@
 ---
 title: Juri y Giorgio
-description: Mi primer post acerca de mis gatitos
+description: "Una publicación personal sobre Juri y Giorgio, mis gatos de compañía y apoyo emocional."
 pubDate: 2026-08-15
+updatedDate: 2026-08-16
 tags:
   - mascotas
   - personal
+slug: juri-y-giorgio
 lang: es
 draft: false
-slug: juri-y-giorgio
+schemaType: "BlogPosting"
+author: "Porfirio Chavez"
+authorAlias: "porfidev"
+cover: "/blog/images/img_0213.webp"
+coverAlt: "Juri y Giorgio descansando juntos"
 ---
 
 # Juri y Giorgio
