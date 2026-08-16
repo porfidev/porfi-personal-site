@@ -25,6 +25,7 @@ const jsonLd = {
 		name: post.data.author,
 		alternateName: post.data.authorAlias,
 		url: siteUrl,
+		sameAs: post.data.authorSameAs,
 	},
 	publisher: {
 		'@type': 'Person',
@@ -37,7 +38,27 @@ const jsonLd = {
 	},
 	inLanguage: post.data.lang,
 	keywords: post.data.tags,
-	...(imageUrl ? { image: imageUrl } : {}),
+	url: canonicalUrl,
+	articleSection: post.data.tags[0],
+	about: post.data.tags.map((tag) => ({
+		'@type': 'Thing',
+		name: tag,
+	})),
+	isPartOf: {
+		'@type': 'Blog',
+		name: 'porfi.dev Blog',
+		url: new URL('/es/blog', siteUrl).toString(),
+	},
+	...(imageUrl
+		? {
+				image: {
+					'@type': 'ImageObject',
+					url: imageUrl,
+					caption: post.data.coverAlt,
+				},
+				thumbnailUrl: imageUrl,
+			}
+		: {}),
 };
 ---
 

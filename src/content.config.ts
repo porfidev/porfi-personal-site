@@ -18,8 +18,17 @@ const blog = defineCollection({
     schemaType: z.enum(['BlogPosting', 'Article']).default('BlogPosting'),
     author: z.string().default('Porfirio Chavez'),
     authorAlias: z.string().default('porfidev'),
-    cover: z.string().optional(),
+    cover: z.string().startsWith('/').optional(),
     coverAlt: z.string().optional(),
+    authorSameAs: z
+      .array(z.url())
+      .default([
+        'https://github.com/porfidev',
+        'https://www.linkedin.com/in/porfidev',
+        'https://www.youtube.com/@porfidev',
+        'https://www.tiktok.com/@porfidev',
+        'https://www.instagram.com/porfidev/',
+      ]),
   }),
 });
 
