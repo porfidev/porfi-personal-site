@@ -14,3 +14,4 @@ Inicio este changelog como un registro publico y ligero de los cambios relevante
 La idea es documentar mejoras de contenido, diseno, funcionalidades, correcciones y mantenimiento sin convertirlo en un blog completo.
 
 * Actualizando astro a la versión 7.2.2
+* Agregado un post de prueba para comprobar el funcionamiento del blog
