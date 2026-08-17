@@ -10,7 +10,7 @@ type Props = {
 const { post, slug } = Astro.props;
 const siteUrl = getRequiredEnv('PUBLIC_SITE_URL');
 
-const canonicalUrl = new URL(`/es/blog/${slug}`, siteUrl).toString();
+const canonicalUrl = new URL(`/es/blog/${slug}/`, siteUrl).toString();
 const imageUrl = post.data.cover ? new URL(post.data.cover, siteUrl).toString() : undefined;
 
 const jsonLd = {
@@ -47,7 +47,7 @@ const jsonLd = {
 	isPartOf: {
 		'@type': 'Blog',
 		name: 'porfi.dev Blog',
-		url: new URL('/es/blog', siteUrl).toString(),
+		url: new URL('/es/blog/', siteUrl).toString(),
 	},
 	...(imageUrl
 		? {

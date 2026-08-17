@@ -3,7 +3,7 @@ import 'normalize.css';
 import '@styles/index.css';
 import './index.styles.css';
 
-const targetPath = '/es';
+const targetPath = '/es/';
 ---
 
 <html lang="es">
@@ -11,9 +11,9 @@ const targetPath = '/es';
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<meta http-equiv="refresh" content={`1.2;url=${targetPath}`} />
-		<link rel="alternate" hreflang="es" href="/es" />
-		<link rel="alternate" hreflang="en" href="/en" />
-		<link rel="alternate" hreflang="x-default" href="/es" />
+		<link rel="alternate" hreflang="es" href="https://porfi.dev/es/" />
+		<link rel="alternate" hreflang="en" href="https://porfi.dev/en/" />
+		<link rel="alternate" hreflang="x-default" href="https://porfi.dev/es/" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 
 		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -22,6 +22,9 @@ const targetPath = '/es';
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<meta name="apple-mobile-web-app-title" content="MyWebSite" />
 		<link rel="manifest" href="/site.webmanifest" />
+
+		<meta name="robots" content="noindex, follow" />
+		<link rel="canonical" href="https://porfi.dev/es/" />
 
 		<title>💻 porfi.dev | software engineer ⚛️</title>
 	</head>
@@ -44,7 +47,7 @@ const targetPath = '/es';
 				: fallbackLocale;
 
 			window.setTimeout(() => {
-				window.location.replace(`/${targetLocale}`);
+				window.location.replace(`/${targetLocale}/`);
 			}, 1200);
 		</script>
 	</body>

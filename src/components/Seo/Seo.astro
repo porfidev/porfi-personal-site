@@ -31,12 +31,13 @@ const {
 } = Astro.props;
 
 const siteUrl = getRequiredEnv('PUBLIC_SITE_URL');
-const canonicalUrl = new URL(path, siteUrl).toString();
+const normalizedPath = path.endsWith('/') ? path : `${path}/`;
+const canonicalUrl = new URL(normalizedPath, siteUrl).toString();
 const imageUrl = new URL(image, siteUrl).toString();
 
 const alternateUrls = {
-	es: new URL('/es', siteUrl).toString(),
-	en: new URL('/en', siteUrl).toString(),
+	es: new URL('/es/', siteUrl).toString(),
+	en: new URL('/en/', siteUrl).toString(),
 };
 
 const ogLocale = lang === 'es' ? 'es_MX' : 'en_US';
