@@ -43,9 +43,7 @@
 }
 
 .contact__card {
-  background-color: rgba(30, 30, 38, 0.60);
   border-radius: 12px;
-  min-height: 96px;
   padding: 20px;
 }
 
@@ -123,6 +121,37 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.contact__method {
+  display: flex;
+  flex-direction: row;
+  column-gap: 12px;
+}
+
+.contact__method-icon {
+  width: 34px;
+  height: 34px;
+  color: var(--color-icon-idle);
+}
+
+.contact__method-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0;
+  justify-content: center;
+}
+
+.contact__method-label {
+  font-family: var(--font-family-base), sans-serif;
+  font-size: 12px;
+  color: #849495;
+}
+
+.contact__method-value {
+  font-family: var(--font-family-base), sans-serif;
+  font-size: 16px;
+  color: #D4E4FA;
 }
 
 @media screen and (min-width: 640px) {

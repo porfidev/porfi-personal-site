@@ -6,6 +6,9 @@ import GlassCard from '@components/ui/GlassCard/GlassCard.astro';
 import StatusIndicator from '@components/ui/StatusIndicator/StatusIndicator.astro';
 import GithubIcon from '@components/icons/GithubIcon.astro';
 import LinkedinIcon from '@components/icons/LinkedinIcon.astro';
+import BlockIconWrapper from '@components/ui/BlockIconWrapper/BlockIconWrapper.astro';
+import AtIcon from '@components/icons/AtIcon.astro';
+import WhatsappIcon from '@components/icons/WhatsappIcon.astro';
 
 interface Props {
 	lang: ContactLang;
@@ -38,7 +41,7 @@ const copy = contactCopy[lang];
 					{copy.openCardTitle.map((line) => <span>{line}</span>)}
 				</h2>
 			</GlassCard>
-			<GlassCard class="contact__card contact__card--github contact__card--link">
+			<GlassCard class="contact__card contact__card--link">
 				<a
 					class="contact__card-link"
 					href="https://github.com/porfidev"
@@ -50,7 +53,7 @@ const copy = contactCopy[lang];
 					<span class="contact__card-icon-text">github</span>
 				</a>
 			</GlassCard>
-			<GlassCard class="contact__card contact__card--linkedin contact__card--link">
+			<GlassCard class="contact__card contact__card--link">
 				<a
 					class="contact__card-link"
 					href="https://linkedin.com/in/porfidev"
@@ -62,7 +65,44 @@ const copy = contactCopy[lang];
 					<span class="contact__card-icon-text">linkedin</span>
 				</a>
 			</GlassCard>
-			<GlassCard class="contact__card contact__card--wide" />
+			<GlassCard class="contact__card contact__card--link">
+				<a
+					class="contact__card-link"
+					href="mailto:hola@porfi.dev"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Porfi email"
+				>
+					<div class="contact__method">
+						<BlockIconWrapper>
+							<AtIcon class="contact__method-icon" />
+						</BlockIconWrapper>
+						<div class="contact__method-content">
+							<span class="contact__method-label">correo electronico</span>
+							<span class="contact__method-value">hola@porfi.dev</span>
+						</div>
+					</div>
+				</a>
+			</GlassCard>
+			<GlassCard class="contact__card contact__card--link">
+				<a
+					class="contact__card-link"
+					href="https://wa.me/525523388443?text=Hola%20Porfi%2C%20vi%20tu%20portfolio"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Porfi email"
+				>
+					<div class="contact__method">
+						<BlockIconWrapper>
+							<WhatsappIcon class="contact__method-icon" />
+						</BlockIconWrapper>
+						<div class="contact__method-content">
+							<span class="contact__method-label">Mensaje whatsapp</span>
+							<span class="contact__method-value">@porfidev</span>
+						</div>
+					</div>
+				</a>
+			</GlassCard>
 		</div>
 	</div>
 </section>
