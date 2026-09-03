@@ -2,15 +2,46 @@
 import pkg from '../../../package.json';
 import type { Lang } from '@i18n/config.ts';
 import { footerCopy } from '@i18n/footer.ts';
+import './Footer.styles.css';
+import PorfidevLogo from '@components/Footer/PorfidevLogo.astro';
 
 type Props = {
 	lang: Lang;
 };
 const websiteVersion = pkg.version;
+const currentYear = new Date().getFullYear();
 const { lang } = Astro.props;
 const copy = footerCopy[lang];
 ---
 
 <footer class="footer">
-	<small>v{websiteVersion}</small>
+	<div class="footer-content">
+		<section class="footer__brand">
+			<PorfidevLogo class="footer__logo" />
+		</section>
+
+		<nav class="footer__nav">
+			<span class="footer__title-text">{copy.navigation}</span>
+			<ul class="footer__links">
+				<li class="footer__links-item">
+					<a class="footer__link" href={`/${lang}/`}>{copy.home}</a>
+				</li>
+				<li class="footer__links-item">
+					<a class="footer__link" href={`/${lang}/blog/`}>{copy.blog}</a>
+				</li>
+				<li class="footer__links-item">
+					<a class="footer__link" href={`/${lang}/changelog/`}>{copy.changelog}</a>
+				</li>
+			</ul>
+		</nav>
+
+		<section class="footer__social">
+			<span class="footer__title-text">{copy.social_networks}</span>
+		</section>
+	</div>
+
+	<div class="footer__bottom">
+		<small class="footer__copyright">© {currentYear} porfi.dev</small>
+		<small class="footer__version">v{websiteVersion}</small>
+	</div>
 </footer>

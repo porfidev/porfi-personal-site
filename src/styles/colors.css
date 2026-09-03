@@ -5,4 +5,7 @@
   --color-icon-idle: #B9CACB;
   --color-icon-hover: var(--color-primary);
   --color-text-primary: #D4E4FA;
+
+  /** footer **/
+  --color-title-text: #DBFCFF;
 }
