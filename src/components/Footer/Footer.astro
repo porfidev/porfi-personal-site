@@ -3,7 +3,8 @@ import pkg from '../../../package.json';
 import type { Lang } from '@i18n/config.ts';
 import { footerCopy } from '@i18n/footer.ts';
 import './Footer.styles.css';
-import PorfidevLogo from '@components/Footer/PorfidevLogo.astro';
+import { socialLinks } from '../../social-links';
+import PorfidevLogo from '@components/ui/PorfidevLogo/PorfidevLogo.astro';
 
 type Props = {
 	lang: Lang;
@@ -37,6 +38,13 @@ const copy = footerCopy[lang];
 
 		<section class="footer__social">
 			<span class="footer__title-text">{copy.social_networks}</span>
+			<ul class="footer__links">
+				{socialLinks.map(({ href, label }) => (
+					<li class="footer__links-item">
+						<a class="footer__link" href={href}>{label}</a>
+					</li>
+				))}
+			</ul>
 		</section>
 	</div>
 

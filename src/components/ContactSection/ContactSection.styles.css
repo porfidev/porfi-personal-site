@@ -1,5 +1,5 @@
 .contact {
-  background-color: #051424;
+  background-color: var(--color-surface);
   padding: 56px max(20px, env(safe-area-inset-right)) 56px max(20px, env(safe-area-inset-left));
 }
 
@@ -12,7 +12,7 @@
 }
 
 .contact__title {
-  color: #DBFCFF;
+  color: var(--color-title-text);
   font-family: 'Inter', serif;
   font-size: clamp(2.5rem, 11vw, 3rem);
   font-weight: 700;
@@ -22,7 +22,7 @@
 }
 
 .contact__text {
-  color: #DBFCFF;
+  color: var(--color-title-text);
   font-family: 'Inter', serif;
   font-size: 1rem;
   line-height: 1.6;
@@ -48,7 +48,7 @@
 }
 
 .contact__card--featured {
-  border-color: #00F0FF;
+  border-color: var(--color-primary);
   border-width: 1px 1px 1px 3px;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .contact__card-title {
-  color: #D4E4FA;
+  color: var(--color-text-primary);
   font-family: var(--font-family-base), sans-serif;
   font-size: clamp(1.67rem, 7.33vw, 2rem);
   font-weight: 600;
@@ -145,13 +145,13 @@
 .contact__method-label {
   font-family: var(--font-family-base), sans-serif;
   font-size: 12px;
-  color: #849495;
+  color: var(--color-text-muted);
 }
 
 .contact__method-value {
   font-family: var(--font-family-base), sans-serif;
   font-size: 16px;
-  color: #D4E4FA;
+  color: var(--color-text-primary);
 }
 
 @media screen and (min-width: 640px) {

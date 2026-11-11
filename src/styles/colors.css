@@ -1,11 +1,22 @@
 :root {
   --font-family-base: 'Inter';
 
-  --color-primary: #00F0FF;
-  --color-icon-idle: #B9CACB;
-  --color-icon-hover: var(--color-primary);
-  --color-text-primary: #D4E4FA;
+  --color-abyssal-iris: #0D0810;
+  --color-midnight-plum: #1A1021;
+  --color-real-amethyst: #38224B;
+  --color-pure-mauve: #553474;
+  --color-master-purple: #8665A6;
+  --color-magic-magic: #A88CC2;
+  --color-text-primary: #EDE4F5;
 
-  /** footer **/
-  --color-title-text: #DBFCFF;
+  --color-background: var(--color-abyssal-iris);
+  --color-surface: var(--color-midnight-plum);
+  --color-surface-raised: var(--color-real-amethyst);
+  --color-border: var(--color-pure-mauve);
+  --color-primary: var(--color-magic-magic);
+  --color-text-muted: var(--color-magic-magic);
+  --color-icon-idle: var(--color-text-primary);
+  --color-icon-hover: var(--color-primary);
+  --color-logo: var(--color-primary);
+  --color-title-text: var(--color-text-primary);
 }

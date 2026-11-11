@@ -2,13 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0d1c2d;
+  background-color: var(--color-background);
 }
 .loader {
   width: 120px;
   height: 22px;
   border-radius: 20px;
-  color: #00f0ff;
+  color: var(--color-primary);
   border: 2px solid;
   position: relative;
 }

@@ -19,7 +19,7 @@ const state: ParticleStateType = {
     context: null,
     particles: [],
     stats: null,
-    colors: ['#FF5507', '#070E14', '#67e241']
+    colors: []
 };
 
 (window as any).debug = { state, color: state.colors };
@@ -246,6 +246,13 @@ const init = () => {
     if(!context) {
         return console.error('No se encontró el contexto de destino');
     }
+
+    const palette = getComputedStyle(canvasElement);
+    state.colors.push(
+        ...['--color-pure-mauve', '--color-master-purple', '--color-magic-magic']
+            .map((token) => palette.getPropertyValue(token).trim())
+            .filter((color): color is HexColor => /^#[0-9a-f]{6}$/i.test(color))
+    );
 
     state.canvas = canvasElement;
     state.context = context;

@@ -2,6 +2,9 @@
 import 'normalize.css';
 import '@styles/index.css';
 import ContactSection from '@components/ContactSection/ContactSection.astro';
+import Footer from '@components/Footer/Footer.astro';
+import HomePageLogo from '@components/HomePageLogo/HomePageLogo.astro';
+import HomePageNav from '@components/HomePageNav/HomePageNav.astro';
 import Seo from '@components/Seo/Seo.astro';
 ---
 
@@ -10,12 +13,6 @@ import Seo from '@components/Seo/Seo.astro';
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<meta name="generator" content={Astro.generator} />
-		<Seo
-			lang="en"
-			title="porfi.dev | Full Stack Developer"
-			description="Portfolio of Porfirio Chávez, a web developer focused on interfaces, modern applications, and digital experiences."
-			path="/en"
-		/>
 
 		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -23,8 +20,20 @@ import Seo from '@components/Seo/Seo.astro';
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<meta name="apple-mobile-web-app-title" content="MyWebSite" />
 		<link rel="manifest" href="/site.webmanifest" />
+
+		<Seo
+			lang="en"
+			title="<porfi.dev /> | Software engineer"
+			description="Portfolio of Porfirio Chávez, a web developer focused on interfaces, modern applications, and digital experiences."
+			path="/en"
+		/>
 	</head>
 	<body>
+		<header class="home-page-header">
+			<HomePageLogo />
+			<HomePageNav lang="en" />
+			<!--FloatMenu-->
+		</header>
 		<!--
 		<header>
 			<MainMenu />
@@ -33,13 +42,18 @@ import Seo from '@components/Seo/Seo.astro';
 		<section id="welcome">
 			<header>
 				<h1>Porfirio Chávez</h1>
+				<h2>Software development</h2>
+				<p>I’ve been building web applications since 2013. I work across the entire process, from the interface people use to the APIs and services that power it.</p>
+				<a class="welcome__contact-link" href="#contact">Let’s talk</a>
 			</header>
+			<img class="welcome__image" src="/images/hero-laptop.webp" width="1000" height="640" alt="" />
 			<canvas id="canvas-particles"></canvas>
 		</section>
 		<div style="width: 100%; height: 3000px; background-color: brown"></div>-->
 		<main>
 			<ContactSection lang="en" />
 		</main>
+		<Footer lang="en" />
 		<script>
 			import '@scripts/background-particle.ts';
 		</script>

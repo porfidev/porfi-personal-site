@@ -1,0 +1,36 @@
+.porfidev-logo {
+  position: relative; /* Reemplaza position: fixed */
+  height: var(--menu-height);
+  align-items: center;
+
+  display: flex;
+  flex-direction: row;
+  padding-left: 2.5rem;
+  padding-right: 0.25rem;
+}
+
+.porfidev-logo__content {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 12px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+}
+
+.porfidev-logo__image {
+  color: var(--color-logo);
+  width: 120px;
+}
+
+/** MOBILE **/
+
+@media (max-width: 640px) {
+  .porfidev-logo {
+    padding-left: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .porfidev-logo__image {
+    width: clamp(78px, 24vw, 120px);
+  }
+}

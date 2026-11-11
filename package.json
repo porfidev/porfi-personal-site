@@ -12,7 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^6.0.4",
+    "@astrojs/react": "^7.1.7",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.9",
     "axios": "^1.16.1",
@@ -23,6 +23,6 @@
   "devDependencies": {
     "@types/lodash": "^4.17.24",
     "prettier": "^3.8.3",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^1.1.2"
   }
 }

@@ -1,0 +1,80 @@
+---
+import './HomePageNav.styles.css';
+import { socialLinks } from '../../social-links';
+
+interface Props {
+	lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const labels = lang === 'es'
+	? { nav: 'Navegación principal', home: 'Inicio', contact: 'Contacto', open: 'Abrir menú', close: 'Cerrar menú' }
+	: { nav: 'Main navigation', home: 'Home', contact: 'Contact', open: 'Open menu', close: 'Close menu' };
+const links = [
+	{ href: `/${lang}/`, label: labels.home, current: 'page' as const },
+	{ href: '/es/blog/', label: 'Blog', hreflang: 'es' },
+	{ href: '#contact', label: labels.contact },
+];
+---
+
+<nav class="home-page-nav" aria-label={labels.nav}>
+	{links.map(({ href, label, current, hreflang }) => (
+		<a class="home-page-nav__link" href={href} aria-current={current} hreflang={hreflang}>
+			<span class="home-page-nav__label">{label}</span>
+			<span class="home-page-nav__label home-page-nav__label--hover" aria-hidden="true">{label}</span>
+		</a>
+	))}
+</nav>
+
+<button class="home-page-nav__toggle" type="button" aria-label={labels.open}
+	aria-haspopup="dialog" aria-controls="home-page-mobile-nav" aria-expanded="false">
+	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+		<path d="M4 6h16M4 12h16M4 18h16" />
+	</svg>
+</button>
+
+<dialog class="home-page-nav__dialog" id="home-page-mobile-nav" aria-label={labels.nav}>
+	<form method="dialog" class="home-page-nav__actions">
+		<button class="home-page-nav__close" aria-label={labels.close} autofocus>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+				<path d="M7 7l10 10M17 7 7 17" />
+			</svg>
+		</button>
+	</form>
+	<nav class="home-page-nav__mobile-links" aria-label={labels.nav}>
+		{links.map(({ href, label, current, hreflang }) => (
+			<a class="home-page-nav__link" href={href} aria-current={current} hreflang={hreflang}>{label}</a>
+		))}
+	</nav>
+	<section class="home-page-nav__social" aria-labelledby="home-page-nav-social-title">
+		<h2 class="home-page-nav__social-title" id="home-page-nav-social-title">
+			{lang === 'es' ? 'Redes sociales' : 'Social media'}
+		</h2>
+		<ul class="home-page-nav__social-links">
+			{socialLinks.map(({ href, label }) => (
+				<li><a class="home-page-nav__link" href={href}>{label}</a></li>
+			))}
+		</ul>
+	</section>
+</dialog>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('.home-page-nav__toggle');
+	const dialog = document.querySelector<HTMLDialogElement>('#home-page-mobile-nav');
+	const mobile = window.matchMedia('(max-width: 640px)');
+
+	if (toggle && dialog) {
+		toggle.addEventListener('click', () => {
+			dialog.showModal();
+			toggle.setAttribute('aria-expanded', 'true');
+		});
+
+		dialog.addEventListener('close', () => toggle.setAttribute('aria-expanded', 'false'));
+		dialog.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => dialog.close());
+		});
+		mobile.addEventListener('change', ({ matches }) => {
+			if (!matches && dialog.open) dialog.close();
+		});
+	}
+</script>

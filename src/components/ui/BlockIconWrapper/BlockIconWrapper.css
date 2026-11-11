@@ -1,7 +1,7 @@
 .block-icon-wrapper {
   width: 60px;
   height: 60px;
-  background: #273647;
+  background: var(--color-surface);
   border-radius: 12px;
   padding: 12px;
   display: flex;

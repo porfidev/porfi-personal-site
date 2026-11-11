@@ -1,10 +1,10 @@
 .footer {
-  background: #020617;
+  background: var(--color-background);
   padding: 40px max(20px, env(safe-area-inset-right)) 40px max(20px, env(safe-area-inset-left));
 }
 
 .footer-content {
-  background: #020617;
+  background: var(--color-background);
   color: var(--color-title-text);
   display: grid;
   gap: 40px;
@@ -28,7 +28,7 @@
 }
 
 .footer__version {
-  color: #64748B;
+  color: var(--color-text-muted);
   font-family: var(--font-family-base), sans-serif;
   font-size: 10px;
   font-weight: 700;
@@ -48,7 +48,7 @@
 }
 
 .footer__copyright {
-  color: #64748B;
+  color: var(--color-text-muted);
   font-family: var(--font-family-base), sans-serif;
   font-size: 10px;
   font-weight: 700;
